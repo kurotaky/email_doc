@@ -38,7 +38,8 @@ MD_END
     def pathname
       @pathname ||= begin
         dir  = './doc/mail/'
-        path = RSpec.current_example.file_path.gsub(%r<\./spec/mailers/(.+)_spec\.rb>, '\1.md')
+        p '===== path ====='
+        p path = RSpec.current_example.file_path.gsub(%r<\./spec/mailers/(.+)_spec\.rb>, '\1.md')
         Pathname.new(dir + path)
       end
     end
