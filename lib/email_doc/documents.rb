@@ -7,7 +7,8 @@ module EmailDoc
     end
  
     def append(context, mail)
-      document = EmailDoc::Document.new(context.clone, mail.clone)
+      p "===== append ====="
+      p document = EmailDoc::Document.new(context.clone, mail.clone)
       @table[document.pathname] << document
     end
  

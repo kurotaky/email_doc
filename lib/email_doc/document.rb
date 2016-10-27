@@ -9,7 +9,7 @@ module EmailDoc
 
     def_delegators :mail, :subject, :from, :to, :reply_to, :body
     def_delegators :context, :described_class
-    def_delegators :example, :description
+    def_delegators :current_example, :description
 
     def initialize(context, mail)
       @context = context
