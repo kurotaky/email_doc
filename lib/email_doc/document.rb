@@ -20,7 +20,7 @@ module EmailDoc
       ERB.new(<<-MD_END).result(binding)
 # #{described_class}
 
-## #{full_description}
+## #{RSpec.current_example.description}
 
 ```
     From: #{from}
