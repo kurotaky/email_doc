@@ -8,8 +8,7 @@ module EmailDoc
     attr_reader :mail, :context, :current_example
 
     def_delegators :mail, :subject, :from, :to, :reply_to, :body
-    def_delegators :context, :described_class, :example
-    def_delegators :example, :description
+    def_delegators :context, :described_class
 
     def initialize(context, mail)
       @context = context
@@ -20,7 +19,7 @@ module EmailDoc
       ERB.new(<<-MD_END).result(binding)
 # #{described_class}
 
-## #{RSpec.current_example}
+## #{RSpec.current_example.full_description}
 
 ```
     From: #{from}
@@ -38,8 +37,7 @@ MD_END
     def pathname
       @pathname ||= begin
         dir  = './doc/mail/'
-        p '===== path ====='
-        p path = RSpec.current_example.file_path.gsub(%r<\./spec/mailers/(.+)_spec\.rb>, '\1.md')
+        path = RSpec.current_example.file_path.gsub(%r<\./spec/mailers/(.+)_spec\.rb>, '\1.md')
         Pathname.new(dir + path)
       end
     end

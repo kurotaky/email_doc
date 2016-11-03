@@ -7,15 +7,11 @@ module EmailDoc
     end
  
     def append(context, mail)
-      p "===== append ====="
-      p document = EmailDoc::Document.new(context.clone, mail.clone)
+      document = EmailDoc::Document.new(context.clone, mail.clone)
       @table[document.pathname] << document
-      p "===== append ===== @table"
-      p @table
     end
  
     def write
-      p "===== write ====="
       @table.each do |pathname, documents|
         pathname.parent.mkpath
         pathname.open("w") do |file|
