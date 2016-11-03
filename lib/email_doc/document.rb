@@ -17,10 +17,12 @@ module EmailDoc
     end
 
     def render
+      p '=== render ==='
+      p RSpec.current_example
       ERB.new(<<-MD_END).result(binding)
 # #{described_class}
 
-## #{RSpec.current_example.description}
+## #{description}
 
 ```
     From: #{from}

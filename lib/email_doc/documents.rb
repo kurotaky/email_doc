@@ -15,7 +15,6 @@ module EmailDoc
       @table.each do |pathname, documents|
         pathname.parent.mkpath
         pathname.open("w") do |file|
-          p file
           file << documents.map(&:render).join("\n")
         end
       end
