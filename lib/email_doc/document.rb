@@ -9,7 +9,7 @@ module EmailDoc
 
     def_delegators :mail, :subject, :from, :to, :reply_to, :body
     def_delegators :context, :described_class
-    def_delegators :example_groups, :description
+    def_delegators :example, :full_description
 
     def initialize(context, mail)
       @context = context
@@ -20,7 +20,7 @@ module EmailDoc
       ERB.new(<<-MD_END).result(binding)
 # #{described_class}
 
-## #{description}
+## #{full_description}
 
 ```
     From: #{from}
