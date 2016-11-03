@@ -18,8 +18,10 @@ describe EmailDoc::Document do
 
   let(:mail) { mailer_class.welcome(to) }
 
+  let(:exm) { RSpec.current_example }
+
   describe '#render' do
-    subject { described_class.new(self, mail).render }
+    subject { described_class.new(self, mail, exm).render }
 
     it 'should render document' do
       document_patterns = [

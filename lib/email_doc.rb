@@ -12,7 +12,8 @@ module EmailDoc
   def self.included(base)
     RSpec.configuration.after(:each, email_doc: true) do
       mail = ActionMailer::Base.deliveries.last
-      EmailDoc.documents.append(self, mail)
+      exm = RSpec.current_example
+      EmailDoc.documents.append(self, mail, exm)
     end
 
     RSpec.configuration.after(:suite) do
