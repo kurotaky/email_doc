@@ -5,7 +5,7 @@ module EmailDoc
   class Document
     extend Forwardable
 
-    attr_reader :mail, :context, :current_example
+    attr_reader :mail, :context
 
     def_delegators :mail, :subject, :from, :to, :reply_to, :body
     def_delegators :context, :described_class, :example
@@ -17,12 +17,10 @@ module EmailDoc
     end
 
     def render
-      p '=== render ==='
-      p RSpec.current_example
       ERB.new(<<-MD_END).result(binding)
 # #{described_class}
 
-## #{description}
+## #{1 * 100}
 
 ```
     From: #{from}
