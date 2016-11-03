@@ -6,8 +6,8 @@ module EmailDoc
       @table = Hash.new {|table, key| table[key] = []}
     end
  
-    def append(context, mail, exm)
-      document = EmailDoc::Document.new(context.clone, mail.clone, exm.clone)
+    def append(context, mail, example)
+      document = EmailDoc::Document.new(context.clone, mail.clone, example.clone)
       @table[document.pathname] << document
     end
  
