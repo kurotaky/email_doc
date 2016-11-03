@@ -8,7 +8,7 @@ module EmailDoc
     attr_reader :mail, :context
 
     def_delegators :mail, :subject, :from, :to, :reply_to, :body
-    def_delegators :context, :described_class
+    def_delegators :context, :described_class, :example
     def_delegators :example, :full_description
 
     def initialize(context, mail)
