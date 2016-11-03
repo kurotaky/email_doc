@@ -8,8 +8,8 @@ module EmailDoc
     attr_reader :mail, :context
 
     def_delegators :mail, :subject, :from, :to, :reply_to, :body
-    def_delegators :context, :described_class, :current_example
-    def_delegators :example, :description
+    def_delegators :context, :described_class
+    def_delegators :example_groups, :description
 
     def initialize(context, mail)
       @context = context
@@ -20,7 +20,7 @@ module EmailDoc
       ERB.new(<<-MD_END).result(binding)
 # #{described_class}
 
-## #{current_example.description}
+## #{description}
 
 ```
     From: #{from}
